@@ -1,11 +1,12 @@
 # this is the "receipts/.gitignore" file...
 
 # ignore all the files in this directory:
-*receipts/
+# *receipts/
+# i cannot for the life of me figure out how to keep the receipts file but ignore the contents inside
 
 # but don't ignore this ".gitignore" file:
 !.gitignore
-
+test.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

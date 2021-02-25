@@ -29,6 +29,7 @@ From inside the virtual environment, install package dependencies:
 
 ```sh
 pip install -r requirements.txt
+pip install sendgrid
 ```
 
 > NOTE: if this command throws an error like "Could not open requirements file: [Errno 2] No such file or directory", make sure you are running it from the repository's root directory, where the requirements.txt file exists (see the initial `cd` step above)

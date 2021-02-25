@@ -42,6 +42,8 @@ def to_usd(my_price):
 import datetime
 from datetime import date
 import time
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 import os
 from dotenv import load_dotenv
 
@@ -61,6 +63,8 @@ for product in products:
 lbsProductList = []
 productIDList = []
 productID = ""
+
+print("Below, you are asked to enter a product ID. When you are finished, enter 'done'.")
 
 while(str.casefold(productID) != str.casefold("Done")):
     productID = input("Please enter a product identifier:")
@@ -140,3 +144,42 @@ with open(completeName, "w") as file:
     file.write("---------------------------------\n")
     file.write("THANK YOU FOR SHOPPING AT PADDY'S PUB!\n")
     file.write("---------------------------------\n")
+
+emailQuestion = input("Would you like to receive the receipt in your email? Yes/No: ")
+if emailQuestion != str.casefold("yes"):
+    print("Have a nice day!")
+    exit()
+
+userEmail = input("Please enter your email address: ")
+
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env var called 'SENDGRID_API_KEY'")
+SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
+client = SendGridAPIClient(SENDGRID_API_KEY)
+subject = "Your Receipt from Paddy's Pub Groceries"
+
+with open(completeName, "r") as file:
+    contents = file.read()
+    lines = contents.split("\n")
+
+htmlListItems = ""
+
+for line in lines:
+    line = "<p>" + str(line) + "</p>"
+    htmlListItems += line
+
+html_content = f"""
+<h3>Hello! Here is your receipt:</h3>
+<ol>
+    {htmlListItems}
+</ol>
+"""
+
+message = Mail(from_email=SENDER_ADDRESS, to_emails=userEmail, subject=subject, html_content=html_content)
+
+try:
+    response = client.send(message)
+    print("Your email receipt has been sent. Thanks again for shopping at Paddy's Pub!")
+
+except:
+    print("Unfortunately, something went wrong. Your receipt email could not be sent.")
+    print("However, a copy of your receipt was still saved in the receipts folder.")
