@@ -39,4 +39,19 @@ def to_usd(my_price):
 
 # TODO: write some Python code here to produce the desired output
 
-print(products)
+motherProductIDList = []
+for product in products:
+    motherProductIDList.append(str(product["id"]))
+
+productIDList = []
+
+productID = ""
+
+while(str.casefold(productID) != str.casefold("Done")):
+    productID = input("Please enter a product identifier:")
+    if productID not in motherProductIDList and productID != str.casefold("Done"):
+        print("Invalid entry. Please enter a valid product ID.")
+        continue
+    elif productID != str.casefold("Done"):
+        productIDList.append(productID)
+
