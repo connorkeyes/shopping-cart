@@ -46,14 +46,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+for product in products:
+    product["price_per"] = "item"
+
+products.append({"id":21, "name": "Organic Bananas", "department": "fruits and vegetables", "aisle": "fruits", "price": 0.79, "price_per": "pound"})
+
 taxRate = float(os.getenv("TAX_RATE", default = 0.0875))
 
 motherProductIDList = []
 for product in products:
     motherProductIDList.append(str(product["id"]))
 
+lbsProductList = []
 productIDList = []
-
 productID = ""
 
 while(str.casefold(productID) != str.casefold("Done")):
@@ -63,6 +68,16 @@ while(str.casefold(productID) != str.casefold("Done")):
         continue
     elif productID != str.casefold("Done"):
         productIDList.append(productID)
+    for product in products:
+        if product["price_per"] == "pound" and str(product["id"]) == productID:
+            while(True):
+                try:
+                    numLbs = float(input("Please enter the number of pounds of " + product["name"] + "."))
+                    lbsProductList.append({"id": productID, "numLbs": numLbs})
+                    break
+                except:
+                    print("Invalid entry. Enter an integer or float.")
+                    continue
 
 userProductList = []
 
@@ -71,10 +86,15 @@ for productID in productIDList:
         if str(product["id"]) == productID:
             userProductList.append(product)
 
+for product in userProductList:
+    for lbsProduct in lbsProductList:
+        if str(product["id"]) == lbsProduct["id"]:
+            product["price"] = product["price"] * lbsProduct["numLbs"]
+
 subtotal = 0
 
 for product in userProductList:
-    subtotal = subtotal + product["price"]    
+    subtotal = subtotal + product["price"]
 
 tax = float(subtotal) * taxRate
 
