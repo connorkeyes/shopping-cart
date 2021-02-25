@@ -1,6 +1,6 @@
-# shopping0cart
+# shopping-cart
 
-This is a rock paper scissors game made for the exploration of Git and some basic Python.
+This is a project created for the fictional "Paddy's Pub". This program scans products from a Google Sheet, prints a receipt, and saves it onto your local directory as well as emailing it to you.
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ pip install -r requirements.txt
 
 In in the root directory of your local repository, create a new file called ".env", and update the contents of the ".env" file to specify the sales tax rate of your location:
 
-    TAX RATE = 0.10
+    TAX_RATE = 0.10
 
 ## Usage
 
