@@ -1,0 +1,1 @@
+Receipts are stored in this file.
