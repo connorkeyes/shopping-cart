@@ -1,0 +1,19 @@
+---------------------------------
+PADDY'S PUB GROCERIES
+WWW.PADDYSPUB.COM
+---------------------------------
+CHECKOUT AT: 2021-02-24 11:29:30 PM
+---------------------------------
+SELECTED PRODUCTS:
+ ... Chocolate Sandwich Cookies $3.50
+ ... All-Seasons Salt $4.99
+ ... Robust Golden Unsweetened Oolong Tea $2.49
+ ... All-Seasons Salt $4.99
+ ... Chocolate Sandwich Cookies $3.50
+---------------------------------
+SUBTOTAL: $19.47
+TAX: $1.95
+TOTAL: $21.42
+---------------------------------
+THANK YOU FOR SHOPPING AT PADDY'S PUB!
+---------------------------------
