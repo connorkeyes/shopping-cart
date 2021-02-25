@@ -45,3 +45,6 @@ Run the shopping cart script:
 
 ```py
 python shopping_cart.py
+```
+
+Receipts will save in the "receipts" folder of your root directory.
