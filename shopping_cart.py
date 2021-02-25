@@ -41,6 +41,7 @@ def to_usd(my_price):
 
 import datetime
 from datetime import date
+import time
 import os
 from dotenv import load_dotenv
 
@@ -118,3 +119,22 @@ print("TOTAL:", to_usd(total))
 print("---------------------------------")
 print("THANK YOU FOR SHOPPING AT PADDY'S PUB!")
 print("---------------------------------")
+
+file_name = time.strftime("%Y-%m-%d-%H-%M-%S") + ".txt" 
+with open(file_name, "w") as file:
+    file.write("---------------------------------\n")
+    file.write("PADDY'S PUB GROCERIES\n")
+    file.write("WWW.PADDYSPUB.COM\n")
+    file.write("---------------------------------\n")
+    file.write("CHECKOUT AT: " + str(date.today()) + e.strftime(" %I:%M:%S %p\n"))
+    file.write("---------------------------------\n")
+    file.write("SELECTED PRODUCTS:\n")
+    for product in userProductList:
+        file.write(" ... " + product["name"] + " " + to_usd(product["price"]) + "\n")
+    file.write("---------------------------------\n")
+    file.write("SUBTOTAL: " + to_usd(subtotal) + "\n")
+    file.write("TAX: " + to_usd(tax) + "\n")
+    file.write("TOTAL: " + to_usd(total) + "\n")
+    file.write("---------------------------------\n")
+    file.write("THANK YOU FOR SHOPPING AT PADDY'S PUB!\n")
+    file.write("---------------------------------\n")
