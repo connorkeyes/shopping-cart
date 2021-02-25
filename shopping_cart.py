@@ -39,6 +39,9 @@ def to_usd(my_price):
 
 # TODO: write some Python code here to produce the desired output
 
+import datetime
+from datetime import date
+
 motherProductIDList = []
 for product in products:
     motherProductIDList.append(str(product["id"]))
@@ -55,3 +58,37 @@ while(str.casefold(productID) != str.casefold("Done")):
     elif productID != str.casefold("Done"):
         productIDList.append(productID)
 
+userProductList = []
+
+for productID in productIDList:
+    for product in products:
+        if str(product["id"]) == productID:
+            userProductList.append(product)
+
+subtotal = 0
+
+for product in userProductList:
+    subtotal = subtotal + product["price"]    
+
+tax = subtotal * 0.0875
+
+total = subtotal + tax
+
+e = datetime.datetime.now() # helpful website to put time in attractive format: https://phoenixnap.com/kb/get-current-date-time-python
+
+print("---------------------------------")
+print("PADDY'S PUB GROCERIES")
+print("WWW.PADDYSPUB.COM")
+print("---------------------------------")
+print("CHECKOUT AT:", date.today(), e.strftime("%I:%M:%S %p")) # used again: https://phoenixnap.com/kb/get-current-date-time-python
+print("---------------------------------")
+print("SELECTED PRODUCTS:")
+for product in userProductList:
+    print(" ...", product["name"], to_usd(product["price"]))
+print("---------------------------------")
+print("SUBTOTAL:", to_usd(subtotal))
+print("TAX:", to_usd(tax))
+print("TOTAL:", to_usd(total))
+print("---------------------------------")
+print("THANK YOU FOR SHOPPING AT PADDY'S PUB!")
+print("---------------------------------")
