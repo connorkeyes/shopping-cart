@@ -41,6 +41,12 @@ def to_usd(my_price):
 
 import datetime
 from datetime import date
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+taxRate = float(os.getenv("TAX_RATE", default = 0.0875))
 
 motherProductIDList = []
 for product in products:
@@ -70,7 +76,7 @@ subtotal = 0
 for product in userProductList:
     subtotal = subtotal + product["price"]    
 
-tax = subtotal * 0.0875
+tax = float(subtotal) * taxRate
 
 total = subtotal + tax
 
