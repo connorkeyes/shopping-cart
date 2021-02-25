@@ -1,6 +1,6 @@
 # shopping-cart
 
-This is a project created for the fictional "Paddy's Pub". This program scans products from a Google Sheet, prints a receipt, and saves it onto your local directory as well as emailing it to you.
+This is a project created for the fictional "Paddy's Pub". This program scans an editable list of products, prints a receipt, and saves it onto your local directory as well as emailing it to you.
 
 ## Prerequisites
 
@@ -48,4 +48,4 @@ Run the shopping cart script:
 python shopping_cart.py
 ```
 
-Receipts will save in the "receipts" folder of your root directory.
+Receipts will save in the "receipts" folder of your root directory. You will have the option to enter your email address and have it emailed to you.

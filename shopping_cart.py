@@ -77,7 +77,7 @@ while(str.casefold(productID) != str.casefold("Done")):
         if product["price_per"] == "pound" and str(product["id"]) == productID:
             while(True):
                 try:
-                    numLbs = float(input("Please enter the number of pounds of " + product["name"] + "."))
+                    numLbs = float(input("Please enter the number of pounds of " + product["name"] + ":"))
                     lbsProductList.append({"id": productID, "numLbs": numLbs})
                     break
                 except:
@@ -183,3 +183,4 @@ try:
 except:
     print("Unfortunately, something went wrong. Your receipt email could not be sent.")
     print("However, a copy of your receipt was still saved in the receipts folder.")
+    print("Thanks again for shopping at Paddys Pub!")
