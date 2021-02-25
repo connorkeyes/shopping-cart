@@ -120,8 +120,10 @@ print("---------------------------------")
 print("THANK YOU FOR SHOPPING AT PADDY'S PUB!")
 print("---------------------------------")
 
-file_name = time.strftime("%Y-%m-%d-%H-%M-%S") + ".txt" 
-with open(file_name, "w") as file:
+fileName = time.strftime("%Y-%m-%d-%H-%M-%S") + ".txt"
+rootDir = os.path.dirname(os.path.abspath("top_level_file.txt")) # I had to dig for this: https://www.kite.com/python/answers/how-to-get-the-path-of-the-root-project-structure-in-python#:~:text=dirname()%20to%20get%20the,top%20level%20of%20the%20project.
+completeName = os.path.join(rootDir + "/receipts", fileName) # https://stackoverflow.com/questions/8024248/telling-python-to-save-a-txt-file-to-a-certain-directory-on-windows-and-mac/8024254
+with open(completeName, "w") as file:
     file.write("---------------------------------\n")
     file.write("PADDY'S PUB GROCERIES\n")
     file.write("WWW.PADDYSPUB.COM\n")

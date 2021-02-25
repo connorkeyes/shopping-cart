@@ -1,3 +1,11 @@
+# this is the "receipts/.gitignore" file...
+
+# ignore all the files in this directory:
+*receipts
+
+# but don't ignore this ".gitignore" file:
+!.gitignore
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
